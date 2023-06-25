@@ -23,7 +23,8 @@ struct RecipeDetailView: View {
             VStack(alignment: .leading){
                 // use "mark" (all caps) to fill in the Xcode breadcrumbs sub-nav
                 // MARK: Recipe Image
-                Image(recipe.image)
+                let image = UIImage(data: recipe.image ?? Data()) ?? UIImage()
+                Image(uiImage: image)
                     .resizable()
                     .scaledToFill()
                 
@@ -66,11 +67,14 @@ struct RecipeDetailView: View {
                     // OLD FOREACH - needed to set id:\.self because it did not have one during iteration
                     //  ForEach (recipe.ingredients, id:\.self) { item in
                     //  Text("• " + item)
-                    ForEach (recipe.ingredients) { item in
+                    
+                    // REFACTOR - for core data it's now an NSSET, instead of [Ingredient]
+                    // core data refactor for NSSET, use allObjects prop and cast as an array
+                    //ForEach (recipe.ingredients) { item in
+                    ForEach(recipe.ingredients.allObjects as! [Ingredient]) { item in
                         // calc the PORTION in the VIEWMODEL so that func can be used elsewhere
                         Text("• " +  RecipeModel.getPortion(ingredient: item, recipeServings: recipe.servings, targetServings: selectedServingSize) + " " +  item.name.lowercased())
                             .font(Font.custom("Avenir", size: 14))
-                        
                     }
                             .padding(.bottom, 1.0)
 
@@ -86,6 +90,8 @@ struct RecipeDetailView: View {
                         .font(Font.custom("Avenir Heavy", size: 16))
                     // ^^^ same as .padding(.vertical, 5)
                     //ForEach(recipe.directions, id: \.self) { item in
+                    
+                    
                     ForEach(0..<recipe.directions.count, id: \.self) { index in
                         Text(String(index+1) + ". " + recipe.directions[index])
                             .padding(.bottom, 5)

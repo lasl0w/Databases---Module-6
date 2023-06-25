@@ -35,8 +35,9 @@ struct RecipeListView: View {
         NavigationView {
             
             VStack (alignment: .leading) {
+                // Text(title)
                 // consistent title formatting across views
-                Text(title)
+                Text("All Recipes")
                     .bold()
                     .padding(.leading)
                     .padding(.top, 40) // drop it 40 pixels from the top
@@ -60,7 +61,9 @@ struct RecipeListView: View {
                                     label: {
                                         HStack(spacing: 20.0) {
                                             // changed spacing to separate image and r.name slightly
-                                            Image(r.image)
+                                            // Image(r.image) - old string value, changed to UIImage for core data
+                                            let image = UIImage(data: r.image ?? Data()) ?? UIImage()
+                                            Image(uiImage: image)
                                                 .resizable()  // so the text is visible
                                                 //.scaledToFit() // to retain aspect ratio
                                                 .scaledToFill() // fills the frame, BUT needs .clip

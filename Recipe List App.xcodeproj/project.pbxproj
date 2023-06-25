@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F1185C0F2A413A960024DEA1 /* BebasNeue-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F1185C0E2A413A960024DEA1 /* BebasNeue-webfont.ttf */; };
+		F1185C152A4162270024DEA1 /* Recipe Data Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F1185C132A4162270024DEA1 /* Recipe Data Model.xcdatamodeld */; };
+		F1185C222A4267A60024DEA1 /* Ingredient+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1185C1E2A4267A60024DEA1 /* Ingredient+CoreDataClass.swift */; };
+		F1185C232A4267A60024DEA1 /* Ingredient+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1185C1F2A4267A60024DEA1 /* Ingredient+CoreDataProperties.swift */; };
+		F1185C242A4267A60024DEA1 /* Recipe+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1185C202A4267A60024DEA1 /* Recipe+CoreDataClass.swift */; };
+		F1185C252A4267A60024DEA1 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1185C212A4267A60024DEA1 /* Recipe+CoreDataProperties.swift */; };
 		F18473EA282823E90091EB7C /* Recipe_List_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18473E9282823E90091EB7C /* Recipe_List_App.swift */; };
 		F18473EC282823E90091EB7C /* RecipeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18473EB282823E90091EB7C /* RecipeListView.swift */; };
 		F18473EE282823EA0091EB7C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F18473ED282823EA0091EB7C /* Assets.xcassets */; };
@@ -32,6 +36,11 @@
 
 /* Begin PBXFileReference section */
 		F1185C0E2A413A960024DEA1 /* BebasNeue-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "BebasNeue-webfont.ttf"; path = "../../../../../Documents_202001/repos/yit/public/fonts/BebasNeue/BebasNeue-webfont.ttf"; sourceTree = "<group>"; };
+		F1185C142A4162270024DEA1 /* Recipe Data Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Recipe Data Model.xcdatamodel"; sourceTree = "<group>"; };
+		F1185C1E2A4267A60024DEA1 /* Ingredient+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F1185C1F2A4267A60024DEA1 /* Ingredient+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ingredient+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F1185C202A4267A60024DEA1 /* Recipe+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataClass.swift"; sourceTree = "<group>"; };
+		F1185C212A4267A60024DEA1 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		F18473E6282823E90091EB7C /* Recipe List App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Recipe List App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F18473E9282823E90091EB7C /* Recipe_List_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recipe_List_App.swift; sourceTree = "<group>"; };
 		F18473EB282823E90091EB7C /* RecipeListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeListView.swift; sourceTree = "<group>"; };
@@ -51,7 +60,7 @@
 		F1C946A12931D09E00E9A483 /* BebasNeue Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BebasNeue Light.ttf"; sourceTree = "<group>"; };
 		F1CAEBD829D2B1C700824BF0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F1CAEBDA29D3655B00824BF0 /* RecipeCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeCategoryView.swift; sourceTree = "<group>"; };
-		F1D7254628FB067800E344D0 /* recipes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = recipes.json; path = "Recipe List App/recipes.json"; sourceTree = SOURCE_ROOT; };
+		F1D7254628FB067800E344D0 /* recipes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = recipes.json; path = "Recipe List App/Data/recipes.json"; sourceTree = SOURCE_ROOT; };
 		F1E7D2E928FB45530042B4AE /* RecipeTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +140,12 @@
 		F18473F9282824400091EB7C /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				F1185C1E2A4267A60024DEA1 /* Ingredient+CoreDataClass.swift */,
+				F1185C1F2A4267A60024DEA1 /* Ingredient+CoreDataProperties.swift */,
+				F1185C202A4267A60024DEA1 /* Recipe+CoreDataClass.swift */,
+				F1185C212A4267A60024DEA1 /* Recipe+CoreDataProperties.swift */,
 				F1D7254628FB067800E344D0 /* recipes.json */,
+				F1185C132A4162270024DEA1 /* Recipe Data Model.xcdatamodeld */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -240,7 +254,6 @@
 				F1D7254728FB067800E344D0 /* recipes.json in Resources */,
 				F1C946A22931D09E00E9A483 /* BebasNeue Thin.ttf in Resources */,
 				F1C946A42931D09E00E9A483 /* BebasNeue Regular.ttf in Resources */,
-				F1185C0F2A413A960024DEA1 /* BebasNeue-webfont.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +264,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1185C152A4162270024DEA1 /* Recipe Data Model.xcdatamodeld in Sources */,
+				F1185C242A4267A60024DEA1 /* Recipe+CoreDataClass.swift in Sources */,
 				F1847401282828D00091EB7C /* Recipe.swift in Sources */,
+				F1185C222A4267A60024DEA1 /* Ingredient+CoreDataClass.swift in Sources */,
 				F1CAEBD929D2B1C700824BF0 /* Constants.swift in Sources */,
+				F1185C252A4267A60024DEA1 /* Recipe+CoreDataProperties.swift in Sources */,
 				F192D2BC28E0960600142FD8 /* RecipeDetailView.swift in Sources */,
 				F1BAE205292F33B700A750D3 /* RecipeHighlights.swift in Sources */,
 				F1B6DD602929F5FA000C8353 /* Rational.swift in Sources */,
 				F184740328282B3A0091EB7C /* RecipeModel.swift in Sources */,
 				F18473EC282823E90091EB7C /* RecipeListView.swift in Sources */,
+				F1185C232A4267A60024DEA1 /* Ingredient+CoreDataProperties.swift in Sources */,
 				F18473EA282823E90091EB7C /* Recipe_List_App.swift in Sources */,
 				F1CAEBDB29D3655B00824BF0 /* RecipeCategoryView.swift in Sources */,
 				F1847405282F6C8C0091EB7C /* DataService.swift in Sources */,
@@ -465,6 +483,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F1185C132A4162270024DEA1 /* Recipe Data Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F1185C142A4162270024DEA1 /* Recipe Data Model.xcdatamodel */,
+			);
+			currentVersion = F1185C142A4162270024DEA1 /* Recipe Data Model.xcdatamodel */;
+			path = "Recipe Data Model.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F18473DE282823E90091EB7C /* Project object */;
 }

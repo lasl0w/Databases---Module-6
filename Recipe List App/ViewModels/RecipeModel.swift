@@ -48,12 +48,12 @@ class RecipeModel: ObservableObject {
 //        }
         
         // INSTEAD PART 2 - FURTHER SHORTHAND
-        self.categories = Set(self.recipes.map({ r in
-            // passing it into a SET automatically filters it to unique - by definition of a SET
-            return r.category
-        }))
-        // Also add an ALL category
-        self.categories.update(with: Constants.defaultListFilter)
+//        self.categories = Set(self.recipes.map({ r in
+//            // passing it into a SET automatically filters it to unique - by definition of a SET
+//            return r.category
+//        }))
+//        // Also add an ALL category
+//        self.categories.update(with: Constants.defaultListFilter)
         
 //
 //        // Set the recipes properties
@@ -63,50 +63,51 @@ class RecipeModel: ObservableObject {
     static func getPortion(ingredient:Ingredient, recipeServings:Int, targetServings:Int) -> String {
         // returns a STRING for the ingredients list
         
+        // REFACTORED - got rid of optionals for when using core data ints
         var portion = ""
-        var numerator = ingredient.num ?? 1 // ?? = nil coalescing operator
+        var numerator = ingredient.num // ?? = nil coalescing operator
         // if the num is nil, make it 1
-        var denominator = ingredient.denom ?? 1
+        var denominator = ingredient.denom
         var wholePortions = 0
         
         // check to make sure we need to do ANY math
-        if ingredient.num != nil {
-            // Get a single serving size by multiplying denom by the recipe servings
-            denominator = denominator * recipeServings
-            // EXAMPLE - 1.5 cups of rice = 3 over 2.   multiply 2 * 6, since default servings was 6
+        //if ingredient.num != nil {
+        // Get a single serving size by multiplying denom by the recipe servings
+        denominator = denominator * recipeServings
+        // EXAMPLE - 1.5 cups of rice = 3 over 2.   multiply 2 * 6, since default servings was 6
+        
+        // Get target portion by multiplying numerator by target servings
+        numerator *= targetServings
+        // EXAMPLE - knowing we are about to work with a single serving, multiply numerator * targetServings
+        
+        // Reduce fraction by greatest common devisor - thanks MICAH!
+        let divisor = Rational.greatestCommonDivisor(numerator, denominator)
+        print(divisor)
+        
+        // same same, but shorthand below
+        numerator = numerator / divisor
+        denominator /= divisor
+        
+        // Get the whole portion.  Is it more than 1?
+        if numerator >= denominator {
+            // calc whole portions
+            wholePortions = numerator / denominator
             
-            // Get target portion by multiplying numerator by target servings
-            numerator *= targetServings
-            // EXAMPLE - knowing we are about to work with a single serving, multiply numerator * targetServings
+            // calc the remainder
+            numerator = numerator % denominator
+            // if it returns zero, then we don't have any fraction to deal with
             
-            // Reduce fraction by greatest common devisor - thanks MICAH!
-            let divisor = Rational.greatestCommonDivisor(numerator, denominator)
-            print(divisor)
-            
-            // same same, but shorthand below
-            numerator = numerator / divisor
-            denominator /= divisor
-            
-            // Get the whole portion.  Is it more than 1?
-            if numerator >= denominator {
-                // calc whole portions
-                wholePortions = numerator / denominator
-                
-                // calc the remainder
-                numerator = numerator % denominator
-                // if it returns zero, then we don't have any fraction to deal with
-                
-                // assign to portion string
-                portion += String(wholePortions)
-            }
-            // Express the remainder as a fraction
-            if numerator > 0 {
-                
-                // Assign remainder as fraction appended to the portion string
-                portion += wholePortions > 0 ? " " : ""
-                portion += "\(numerator)/\(denominator)"
-            }
+            // assign to portion string
+            portion += String(wholePortions)
         }
+        // Express the remainder as a fraction
+        if numerator > 0 {
+            
+            // Assign remainder as fraction appended to the portion string
+            portion += wholePortions > 0 ? " " : ""
+            portion += "\(numerator)/\(denominator)"
+        }
+    
         // can do an if var, instead of an if let
         if var unit = ingredient.unit {
             // if we need to pluralize

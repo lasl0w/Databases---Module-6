@@ -70,7 +70,10 @@ struct RecipeFeaturedView: View {
 
                                 
                                 VStack(spacing: 0) {
-                                    Image(model.recipes[index].image)
+                                    // refactor to use UIIMage for core data
+                                    // double nil-coalesce!  if this happens to be nil, and then if this happens to be nil
+                                    let image = UIImage(data: model.recipes[index].image ?? Data()) ?? UIImage()
+                                    Image(uiImage: image)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .clipped()

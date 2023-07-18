@@ -31,4 +31,12 @@ class IngredientJSON: Identifiable, Decodable {
     var num:Int?
     var denom:Int?
     var unit:String?
+    
+    // can't create an IngredientJSON out in our views without either
+    // A)  create an init method here
+    init() {
+        name = ""
+    }
+    // B) assign it an initial value in the property declarion above
+    // var name:String = ""
 }
